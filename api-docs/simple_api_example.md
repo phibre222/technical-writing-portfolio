@@ -51,6 +51,7 @@ GET https://api.simpleweather.example/v1/weather/current?city=Berlin&units=metri
 
 
 Beispielantwort (200 OK)
+
 {
   "location": "Köln",
   "forecast": [
@@ -95,6 +96,7 @@ Liefert eine 5-Tage-Vorhersage in 3-Stunden-Intervallen.
 | `limit` | int    | nein    | Anzahl der zurückzugebenden Zeitpunkte (Standard = 10). |
 
 Beispielanfrage
+
 GET https://api.simpleweather.example/v1/weather/forecast?city=Köln&limit=4
 
 Beispielantwort
