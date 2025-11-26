@@ -77,7 +77,9 @@ Beispielantwort (200 OK)
   ]
 }
 
+
 3. Fehlercodes
+
 Statuscode	Meaning	Beschreibung
 400 Bad Request	Parameter fehlen oder sind ungültig.	
 401 Unauthorized	API-Key fehlt oder ist ungültig.	
@@ -90,12 +92,14 @@ Fehlerantwort-Beispiel (400)
   "error": "Invalid parameters: either 'city' or ('lat' and 'lon') must be provided."
 }
 
+
 4. Ratenbegrenzung (Rate Limiting)
 Plan	Limit
 Free Tier	60 Requests / Minute
 Pro Tier	600 Requests / Minute
 
 Der Header X-RateLimit-Remaining informiert über das verbleibende Kontingent.
+
 
 5. Versionshinweise
 Version 1.0
@@ -110,6 +114,7 @@ Fehlercodes
 
 Authentifizierung über API-Key
 
+
 6. Beispiele für verschiedene Sprachen
 cURL
 curl -X GET "https://api.simpleweather.example/v1/weather/current?city=Hamburg" \
@@ -121,14 +126,3 @@ fetch("https://api.simpleweather.example/v1/weather/current?city=Hamburg", {
 })
   .then(res => res.json())
   .then(data => console.log(data));
-
-  Schlussbemerkung
-
-Diese API-Dokumentation dient als strukturiertes Beispiel und deckt typische Anforderungen an moderne REST-APIs ab.
-Sie fokussiert auf Verständlichkeit, klare Parameterdefinitionen und direkt einsetzbare Beispiele.
-
-
----
-
-Wenn du bereit bist, geht’s mit **Nummer 3: Release Notes (v1.2) — kompakt, professionell, realistisch** weiter.  
-Einfach kurz „weiter“.
