@@ -18,12 +18,13 @@ Die API verwendet einen statischen API-Key.
 **Header-Beispiel:**
 ```http
 Authorization: Bearer YOUR_API_KEY
-Accept: application/json
+Accept: application/json```
 
-2. Endpunkte
-2.1 Aktuelles Wetter abrufen
+## 2. Endpunkte
+### 2.1 Aktuelles Wetter abrufen
 
-GET /weather/current
+```sql
+GET /weather/current```
 
 Zweck
 
