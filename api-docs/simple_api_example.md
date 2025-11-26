@@ -78,14 +78,63 @@ Beispielantwort (200 OK)
 }
 
 
-3. Fehlercodes
+### 2.2 Vorhersage abrufen
 
-Statuscode	Meaning	Beschreibung
-400 Bad Request	Parameter fehlen oder sind ungültig.	
-401 Unauthorized	API-Key fehlt oder ist ungültig.	
-404 Not Found	Angegebener Ort konnte nicht gefunden werden.	
-429 Too Many Requests	Ratenlimit überschritten (Standard: 60 Requests / Minute).	
-500 Internal Server Error	Unerwarteter Serverfehler.
+GET /weather/forecast
+
+Zweck
+
+Liefert eine 5-Tage-Vorhersage in 3-Stunden-Intervallen.
+
+| Name    | Typ    | Pflicht | Beschreibung                                            |
+| ------- | ------ | ------- | ------------------------------------------------------- |
+| `city`  | string | nein    | Stadtname.                                              |
+| `lat`   | float  | nein    | Breitengrad.                                            |
+| `lon`   | float  | nein    | Längengrad.                                             |
+| `units` | string | nein    | `metric` oder `imperial`.                               |
+| `limit` | int    | nein    | Anzahl der zurückzugebenden Zeitpunkte (Standard = 10). |
+
+Beispielanfrage
+GET https://api.simpleweather.example/v1/weather/forecast?city=Köln&limit=4
+
+Beispielantwort
+{
+  "location": "Köln",
+  "forecast": [
+    {
+      "timestamp": "2025-11-12T15:00:00Z",
+      "temperature": 10.1,
+      "condition": "Rain"
+    },
+    {
+      "timestamp": "2025-11-12T18:00:00Z",
+      "temperature": 9.4,
+      "condition": "Rain"
+    },
+    {
+      "timestamp": "2025-11-12T21:00:00Z",
+      "temperature": 8.0,
+      "condition": "Cloudy"
+    },
+    {
+      "timestamp": "2025-11-13T00:00:00Z",
+      "temperature": 7.2,
+      "condition": "Clear"
+    }
+  ]
+}
+
+
+### 3. Fehlercodes
+
+| Statuscode                    | Meaning                                                    | Beschreibung |
+| ----------------------------- | ---------------------------------------------------------- | ------------ |
+| **400** Bad Request           | Parameter fehlen oder sind ungültig.                       |              |
+| **401** Unauthorized          | API-Key fehlt oder ist ungültig.                           |              |
+| **404** Not Found             | Angegebener Ort konnte nicht gefunden werden.              |              |
+| **429** Too Many Requests     | Ratenlimit überschritten (Standard: 60 Requests / Minute). |              |
+| **500** Internal Server Error | Unerwarteter Serverfehler.                                 |              |
+
 
 Fehlerantwort-Beispiel (400)
 {
@@ -93,15 +142,19 @@ Fehlerantwort-Beispiel (400)
 }
 
 
-4. Ratenbegrenzung (Rate Limiting)
-Plan	Limit
-Free Tier	60 Requests / Minute
-Pro Tier	600 Requests / Minute
+### 4. Ratenbegrenzung (Rate Limiting)
 
-Der Header X-RateLimit-Remaining informiert über das verbleibende Kontingent.
+| Plan      | Limit                 |
+| --------- | --------------------- |
+| Free Tier | 60 Requests / Minute  |
+| Pro Tier  | 600 Requests / Minute |
 
 
-5. Versionshinweise
+Der Header `X-RateLimit-Remaining` informiert über das verbleibende Kontingent.
+
+
+### 5. Versionshinweise
+
 Version 1.0
 
 Veröffentlichung der Basis-Endpunkte
@@ -115,7 +168,8 @@ Fehlercodes
 Authentifizierung über API-Key
 
 
-6. Beispiele für verschiedene Sprachen
+### 6. Beispiele für verschiedene Sprachen
+
 cURL
 curl -X GET "https://api.simpleweather.example/v1/weather/current?city=Hamburg" \
      -H "Authorization: Bearer YOUR_API_KEY"
