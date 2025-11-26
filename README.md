@@ -1,5 +1,3 @@
-md
-
 # Technical Writing Portfolio
 
 Dieses Repository enthält Arbeitsproben aus den Bereichen:
